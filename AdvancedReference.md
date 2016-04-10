@@ -25,8 +25,8 @@ https://github.com/justinmeza/lci
 
     BTW Use a variable to index into an array
     I HAS A index ITZ 3
-    array'Z SRS 2 R 2        BTW Kinda like array[2] = 1
-    array'Z SRS index R 2    BTW Kinda like array[index] = 1
+    array'Z SRS 2 R 1        BTW Kinda like array[2] = 1
+    array'Z SRS index R 1    BTW Kinda like array[index] = 1
 
 	BTW Functions in arrays
 	HOW IZ I functionName

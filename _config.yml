@@ -9,9 +9,9 @@
 title: LOLCODE Reference
 email: leyarotheconquerer@yahoo.com
 subtitle: An abbreviated reference for the LOLCODE language.
-baseurl: "/lolcode-reference" # the subpath of your site, e.g. /blog
-url: "http://leyarotheconquerer.github.io" # the base hostname & protocol for your site
-github_username:  leyarotheconquerer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "localhost" # the base hostname & protocol for your site
+github_username:  leyarotheconquerer/lolcode-reference
 
 # Build settings
 markdown: kramdown

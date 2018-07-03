@@ -2,7 +2,7 @@
 layout: post
 title:  "Advanced"
 abbrev: "Files, arrays, and sockets"
-date:   2016-04-11 20:02:00 -0500
+date:   2018-07-02 20:11:00 -0500
 categories: advanced reference
 ---
 

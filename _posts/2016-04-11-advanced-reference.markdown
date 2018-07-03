@@ -54,24 +54,28 @@ The following features will probably not work outside of LCI by Justin Meza.
 	BTW Include the input output library
 	CAN HAS STDIO?
 
-	BTW Open file
-	I HAS A file ITZ I IZ STDIO'Z OPEN YR "filename" AN YR "r" MKAY
-	I IZ STDIO'Z DIAF YR file MKAY
+	BTW Open file for reading
+	I HAS A readFile ITZ I IZ STDIO'Z OPEN YR "filename" AN YR "r" MKAY
+	I IZ STDIO'Z DIAF YR readFile MKAY
 	O RLY?
 		YA RLY
-			BTW Successfully opened the file
+			BTW Failed to open file for reading
 		NO WAI
-			BTW Failed to open file
+			BTW Successfully opened the file for reading
 	OIC
 
 	BTW Read in from file (1024 bytes)
-	I HAS A contents ITZ I IZ STDIO'Z LUK YR file AN YR 1024 MKAY
+	I HAS A contents ITZ I IZ STDIO'Z LUK YR readFile AN YR 1024 MKAY
+
+	BTW Open file for writing
+	I HAS A writeFile ITZ I IZ STDIO'Z OPEN YR "filename" AN YR "r" MKAY
 
 	BTW Write to file
-	I IZ STDIO'Z SCRIBBEL YR file AN YR "I'z writing to the file" MKAY
+	I IZ STDIO'Z SCRIBBEL YR writeFile AN YR "I'z writing to the file" MKAY
 
 	BTW Close file
-	I IZ STDIO'Z CLOSE YR file MKAY
+	I IZ STDIO'Z CLOSE YR writeFile MKAY
+	I IZ STDIO'Z CLOSE YR readFile MKAY
 
 ### Sockets Library ###
 	BTW Include the sockets library

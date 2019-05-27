@@ -2,12 +2,15 @@
 layout: post
 title:  "Advanced"
 abbrev: "Files, arrays, and sockets"
-date:   2018-07-02 20:11:00 -0500
+date:   2019-05-27 18:13:00 -0500
 categories: advanced reference
 ---
 
 The following features will probably not work outside of LCI by Justin Meza.
 [https://github.com/justinmeza/lci](https://github.com/justinmeza/lci)
+
+> Note: You'll need to use the `future` branch since most of these
+> features haven't been merged into `master` yet.
 
 ### External Libraries ###
 	BTW Many of these features require 1.4

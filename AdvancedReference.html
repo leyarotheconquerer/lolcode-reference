@@ -1,16 +1,491 @@
+<!DOCTYPE html>
 <html>
 <head>
+<title>AdvancedReference.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
 </head>
 <body>
 <h1 id="lolcode">LOLCODE</h1>
 <h2 id="advanced-quick-reference">Advanced Quick Reference</h2>
 <p>The following features will probably not work outside of LCI by Justin Meza.
-<a href="https://github.com/justinmeza/lci">https://github.com/justinmeza/lci</a></p>
+https://github.com/justinmeza/lci</p>
+<blockquote>
+<p>Note: You'll need to use the <code>future</code> branch since most of these
+features haven't been merged into <code>master</code> yet.</p>
+</blockquote>
 <h3 id="external-libraries">External Libraries</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Many&nbsp;of&nbsp;these&nbsp;features&nbsp;require&nbsp;1.4</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>HAI&nbsp;1.4</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Include&nbsp;&lt;stdio&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>CAN&nbsp;HAS&nbsp;STDIO?</span></span></span></div></pre><h3 id="arrays">Arrays</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Create&nbsp;an&nbsp;array</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;array&nbsp;ITZ&nbsp;A&nbsp;BUKKIT</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Store/access&nbsp;values&nbsp;in&nbsp;array&nbsp;referenced&nbsp;by&nbsp;literals</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>array&#39;Z&nbsp;one&nbsp;R&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;Kinda&nbsp;like&nbsp;array.one&nbsp;=&nbsp;1</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>array&#39;Z&nbsp;two&nbsp;R&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;Kinda&nbsp;like&nbsp;array.two&nbsp;=&nbsp;2</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>VISIBLE&nbsp;array&#39;Z&nbsp;1&nbsp;&nbsp;&nbsp;BTW&nbsp;Accessing&nbsp;array.one</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>VISIBLE&nbsp;array&#39;Z&nbsp;two</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Use&nbsp;a&nbsp;variable&nbsp;to&nbsp;index&nbsp;into&nbsp;an&nbsp;array</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;index&nbsp;ITZ&nbsp;3</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>array&#39;Z&nbsp;SRS&nbsp;2&nbsp;R&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;Kinda&nbsp;like&nbsp;array[2]&nbsp;=&nbsp;1</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>array&#39;Z&nbsp;SRS&nbsp;index&nbsp;R&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;Kinda&nbsp;like&nbsp;array[index]&nbsp;=&nbsp;1</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Functions&nbsp;in&nbsp;arrays</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>HOW&nbsp;IZ&nbsp;I&nbsp;functionName</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>GTFO</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IF&nbsp;U&nbsp;SAY&nbsp;SO</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>array&#39;Z&nbsp;function&nbsp;R&nbsp;functionName</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;array&#39;Z&nbsp;function&nbsp;MKAY</span></span></span></div></pre><h3 id="string-library">String Library</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Include&nbsp;the&nbsp;string&nbsp;library</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>CAN&nbsp;HAS&nbsp;STRING?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;String&nbsp;length</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;string&nbsp;ITZ&nbsp;&quot;This&nbsp;is&nbsp;a&nbsp;test&nbsp;string&quot;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;length</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>length&nbsp;R&nbsp;I&nbsp;IZ&nbsp;STRING&#39;Z&nbsp;LEN&nbsp;YR&nbsp;string&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Character&nbsp;at&nbsp;index</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;char&nbsp;ITZ&nbsp;I&nbsp;IZ&nbsp;STRING&#39;Z&nbsp;AT&nbsp;YR&nbsp;string&nbsp;AN&nbsp;YR&nbsp;0&nbsp;MKAY</span></span></span></div></pre><h3 id="files">Files</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Include&nbsp;the&nbsp;input&nbsp;output&nbsp;library</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>CAN&nbsp;HAS&nbsp;STDIO?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Open&nbsp;file</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;file&nbsp;ITZ&nbsp;I&nbsp;IZ&nbsp;STDIO&#39;Z&nbsp;OPEN&nbsp;YR&nbsp;&quot;filename&quot;&nbsp;AN&nbsp;YR&nbsp;&quot;r&quot;&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;STDIO&#39;Z&nbsp;DIAF&nbsp;YR&nbsp;file&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>O&nbsp;RLY?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>YA&nbsp;RLY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;Successfully&nbsp;opened&nbsp;the&nbsp;file</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>NO&nbsp;WAI</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;Failed&nbsp;to&nbsp;open&nbsp;file</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OIC</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Read&nbsp;in&nbsp;from&nbsp;file&nbsp;(1024&nbsp;bytes)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;contents&nbsp;ITZ&nbsp;I&nbsp;IZ&nbsp;STDIO&#39;Z&nbsp;LUK&nbsp;YR&nbsp;file&nbsp;AN&nbsp;YR&nbsp;1024&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Write&nbsp;to&nbsp;file</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;STDIO&#39;Z&nbsp;SCRIBBEL&nbsp;YR&nbsp;file&nbsp;AN&nbsp;YR&nbsp;&quot;I&#39;z&nbsp;writing&nbsp;to&nbsp;the&nbsp;file&quot;&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Close&nbsp;file</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;STDIO&#39;Z&nbsp;CLOSE&nbsp;YR&nbsp;file&nbsp;MKAY</span></span></span></div></pre><h3 id="sockets-library">Sockets Library</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Include&nbsp;the&nbsp;sockets&nbsp;library</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>CAN&nbsp;HAS&nbsp;SOCKS?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Bind&nbsp;to&nbsp;a&nbsp;socket&nbsp;(127.0.0.1:8888)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;sock</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>sock&nbsp;R&nbsp;I&nbsp;IZ&nbsp;SOCKS&#39;Z&nbsp;BIND&nbsp;YR&nbsp;&quot;127.0.0.1&quot;&nbsp;AN&nbsp;YR&nbsp;8888&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Listen&nbsp;for&nbsp;a&nbsp;connection</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;conn</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>conn&nbsp;R&nbsp;I&nbsp;IZ&nbsp;SOCKS&#39;Z&nbsp;LISTN&nbsp;YR&nbsp;sock&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Read&nbsp;1024&nbsp;bytes&nbsp;from&nbsp;connection</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;packet</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>packet&nbsp;R&nbsp;I&nbsp;IZ&nbsp;SOCKS&#39;Z&nbsp;GET&nbsp;YR&nbsp;sock&nbsp;AN&nbsp;YR&nbsp;conn&nbsp;AN&nbsp;YR&nbsp;1024&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Write&nbsp;to&nbsp;the&nbsp;connection</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;SOCKS&#39;Z&nbsp;PUT&nbsp;YR&nbsp;sock&nbsp;AN&nbsp;YR&nbsp;conn&nbsp;AN&nbsp;YR&nbsp;&quot;Hai!&nbsp;I&nbsp;got&nbsp;ur&nbsp;msg.&nbsp;Kthxbye&quot;&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Close&nbsp;the&nbsp;connection</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;SOCKS&#39;Z&nbsp;CLOSE&nbsp;YR&nbsp;conn&nbsp;MKAY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Connect&nbsp;to&nbsp;a&nbsp;listening&nbsp;port</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>conn&nbsp;R&nbsp;I&nbsp;IZ&nbsp;SOCS&#39;Z&nbsp;KONN&nbsp;YR&nbsp;sock&nbsp;AN&nbsp;YR&nbsp;&#39;127.0.0.1&#39;&nbsp;AN&nbsp;YR&nbsp;80&nbsp;MKAY</span></span></span></div></pre>
+<pre><code>BTW Many of these features require 1.4
+HAI 1.4
+
+BTW Include &lt;stdio&gt;
+CAN HAS STDIO?
+</code></pre>
+<h3 id="arrays">Arrays</h3>
+<pre><code>BTW Create an array
+I HAS A array ITZ A BUKKIT
+
+BTW Store/access values in array referenced by literals
+array'Z one R 1     BTW Kinda like array.one = 1
+array'Z two R 2     BTW Kinda like array.two = 2
+VISIBLE array'Z 1   BTW Accessing array.one
+VISIBLE array'Z two
+
+BTW Use a variable to index into an array
+I HAS A index ITZ 3
+array'Z SRS 2 R 1        BTW Kinda like array[2] = 1
+array'Z SRS index R 1    BTW Kinda like array[index] = 1
+
+BTW Functions in arrays
+HOW IZ I functionName
+	GTFO
+IF U SAY SO
+array'Z function R functionName
+I IZ array'Z function MKAY
+</code></pre>
+<h3 id="string-library">String Library</h3>
+<pre><code>BTW Include the string library
+CAN HAS STRING?
+
+BTW String length
+I HAS A string ITZ &quot;This is a test string&quot;
+I HAS A length
+length R I IZ STRING'Z LEN YR string MKAY
+
+BTW Character at index
+I HAS A char ITZ I IZ STRING'Z AT YR string AN YR 0 MKAY
+</code></pre>
+<h3 id="files">Files</h3>
+<pre><code>BTW Include the input output library
+CAN HAS STDIO?
+
+BTW Open file for reading
+I HAS A readFile ITZ I IZ STDIO'Z OPEN YR &quot;filename&quot; AN YR &quot;r&quot; MKAY
+I IZ STDIO'Z DIAF YR readFile MKAY
+O RLY?
+	YA RLY
+		BTW Failed to open file for reading
+	NO WAI
+		BTW Successfully opened the file for reading
+OIC
+
+BTW Read in from file (1024 bytes)
+I HAS A contents ITZ I IZ STDIO'Z LUK YR readFile AN YR 1024 MKAY
+
+BTW Open file for writing
+I HAS A writeFile ITZ I IZ STDIO'Z OPEN YR &quot;filename&quot; AN YR &quot;r&quot; MKAY
+
+BTW Write to file
+I IZ STDIO'Z SCRIBBEL YR writeFile AN YR &quot;I'z writing to the file&quot; MKAY
+
+BTW Close file
+I IZ STDIO'Z CLOSE YR writeFile MKAY
+I IZ STDIO'Z CLOSE YR readFile MKAY
+</code></pre>
+<h3 id="sockets-library">Sockets Library</h3>
+<pre><code>BTW Include the sockets library
+CAN HAS SOCKS?
+
+BTW Bind to a socket (127.0.0.1:8888)
+I HAS A sock
+sock R I IZ SOCKS'Z BIND YR &quot;127.0.0.1&quot; AN YR 8888 MKAY
+
+BTW Listen for a connection
+I HAS A conn
+conn R I IZ SOCKS'Z LISTN YR sock MKAY
+
+BTW Read 1024 bytes from connection
+I HAS A packet
+packet R I IZ SOCKS'Z GET YR sock AN YR conn AN YR 1024 MKAY
+
+BTW Write to the connection
+I IZ SOCKS'Z PUT YR sock AN YR conn AN YR &quot;Hai! I got ur msg. Kthxbye&quot; MKAY
+
+BTW Close the connection
+I IZ SOCKS'Z CLOSE YR conn MKAY
+
+BTW Connect to a listening port
+conn R I IZ SOCS'Z KONN YR sock AN YR '127.0.0.1' AN YR 80 MKAY
+</code></pre>
+
 </body>
 </html>

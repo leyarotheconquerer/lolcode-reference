@@ -6,6 +6,9 @@ Advanced Quick Reference
 The following features will probably not work outside of LCI by Justin Meza.
 https://github.com/justinmeza/lci
 
+> Note: You'll need to use the `future` branch since most of these
+> features haven't been merged into `master` yet.
+
 ### External Libraries ###
 	BTW Many of these features require 1.4
 	HAI 1.4

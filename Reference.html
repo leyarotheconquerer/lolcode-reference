@@ -1,15 +1,424 @@
+<!DOCTYPE html>
 <html>
 <head>
+<title>Reference.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
 </head>
 <body>
 <h1 id="lolcode">LOLCODE</h1>
 <h2 id="a-quick-reference">A Quick Reference</h2>
 <h3 id="version">Version</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>HAI&nbsp;1.2</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>KTHXBYE</span></span></span></div></pre><h3 id="comments">Comments</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Line&nbsp;comment</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OBTW</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>Block&nbsp;comment</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>TLDR</span></span></span></div></pre><h3 id="variables">Variables</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Case&nbsp;sensitive&nbsp;variables</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;variable</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;otherVariable&nbsp;ITZ&nbsp;3</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Assignment</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>variable&nbsp;R&nbsp;&quot;O&nbsp;HAI&quot;</span></span></span></div></pre><h3 id="input-output">Input/Output</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Output</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>VISIBLE&nbsp;&quot;Hai&nbsp;wurld!&quot;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Input</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;HAS&nbsp;A&nbsp;values</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>GIMMEH&nbsp;values</span></span></span></div></pre><h3 id="types">Types</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Type&nbsp;casting</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>MAEK&nbsp;variable&nbsp;A&nbsp;TROOF</span></span></span></div></pre><table>
+<pre><code>HAI 1.2
+
+KTHXBYE
+</code></pre>
+<h3 id="comments">Comments</h3>
+<pre><code>BTW Line comment
+OBTW
+    Block comment
+TLDR
+</code></pre>
+<h3 id="variables">Variables</h3>
+<pre><code>BTW Case sensitive variables
+I HAS A variable
+I HAS A otherVariable ITZ 3
+
+BTW Assignment
+variable R &quot;O HAI&quot;
+</code></pre>
+<h3 id="inputoutput">Input/Output</h3>
+<pre><code>BTW Output
+VISIBLE &quot;Hai wurld!&quot;
+
+BTW Input
+I HAS A values
+GIMMEH values
+</code></pre>
+<h3 id="types">Types</h3>
+<pre><code>BTW Type casting
+MAEK variable A TROOF
+</code></pre>
+<table>
 <thead>
 <tr>
 <th>Type</th>
@@ -40,7 +449,10 @@
 </tbody>
 </table>
 <h3 id="strings">Strings</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Concatenation</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>SMOOSH&nbsp;&quot;Can&nbsp;has&nbsp;a&nbsp;&quot;&nbsp;AN&nbsp;&quot;CHEESEBURGER&quot;&nbsp;MKAY</span></span></span></div></pre><table>
+<pre><code>BTW Concatenation
+SMOOSH &quot;Can has a &quot; AN &quot;CHEESEBURGER&quot; MKAY
+</code></pre>
+<table>
 <thead>
 <tr>
 <th>Escape</th>
@@ -79,8 +491,77 @@
 </tbody>
 </table>
 <h3 id="operators">Operators</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>SUM&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;+</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>DIFF&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;-</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>PRODUKT&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;*</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>QUOSHUNT&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;/</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>MOD&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;modulo</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BIGGR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;max</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>SMALLR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;min</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;and</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>EITHER&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;or</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>WON&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;xor</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>NOT&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;not</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;SAEM&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;==</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;DIFFRINT&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;!=</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;SAEM&nbsp;a&nbsp;AN&nbsp;BIGGR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;&gt;=</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;SAEM&nbsp;a&nbsp;AN&nbsp;SMALLR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;&lt;=</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;DIFFRINT&nbsp;a&nbsp;AN&nbsp;SMALLR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;BTW&nbsp;&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;DIFFRINT&nbsp;a&nbsp;AN&nbsp;BIGGR&nbsp;OF&nbsp;a&nbsp;AN&nbsp;b&nbsp;&nbsp;&nbsp;BTW&nbsp;&lt;</span></span></span></div></pre><h3 id="flow-control">Flow Control</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;If&nbsp;statement</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BOTH&nbsp;SAEM&nbsp;a&nbsp;AN&nbsp;b</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>O&nbsp;RLY?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>YA&nbsp;RLY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;If</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>MEBBE&nbsp;BOTH&nbsp;SAEM&nbsp;b&nbsp;AN&nbsp;c</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;ElseIf</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>NO&nbsp;WAI</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;Else</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OIC</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Case&nbsp;statement</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>variable</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>WTF?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>OMG&nbsp;&quot;R&quot;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;variable&nbsp;=&nbsp;&quot;R&quot;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTFO</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>OMG&nbsp;&quot;Y&quot;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;variable&nbsp;=&nbsp;&quot;Y&quot;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>OMG&nbsp;&quot;G&quot;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;variable&nbsp;=&nbsp;&quot;Y&quot;&nbsp;or&nbsp;variable&nbsp;=&nbsp;&quot;G&quot;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GTFO</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>OMGWTF</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BTW&nbsp;default</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>OIC</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;While&nbsp;loop</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IM&nbsp;IN&nbsp;YR&nbsp;loop&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;&#39;loop&#39;&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;loop</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>GTFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;break</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IM&nbsp;OUTTA&nbsp;YR&nbsp;loop</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>BTW&nbsp;Can&nbsp;also&nbsp;pretend&nbsp;to&nbsp;be&nbsp;a&nbsp;for&nbsp;loop</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IM&nbsp;IN&nbsp;YR&nbsp;forLoop&nbsp;UPPIN&nbsp;YR&nbsp;index&nbsp;TIL&nbsp;BOTH&nbsp;SAEM&nbsp;index&nbsp;AN&nbsp;5</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>VISIBLE&nbsp;index</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IM&nbsp;OUTTA&nbsp;YR&nbsp;forLoop</span></span></span></div></pre><h3 id="functions">Functions</h3>
-<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>HOW&nbsp;IZ&nbsp;I&nbsp;functionName&nbsp;YR&nbsp;arg1&nbsp;AN&nbsp;YR&nbsp;arg2</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>BOTH&nbsp;SAEM&nbsp;arg1&nbsp;AN&nbsp;&quot;return&nbsp;the&nbsp;value&quot;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;RLY?</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>YA&nbsp;RLY</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>FOUND&nbsp;YR&nbsp;arg2&nbsp;&nbsp;BTW&nbsp;Returns&nbsp;arg2</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>NO&nbsp;WAI</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>GTFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BTW&nbsp;Returns&nbsp;NOOB</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta paragraph text"><span>OIC</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>IF&nbsp;U&nbsp;SAY&nbsp;SO</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>I&nbsp;IZ&nbsp;functionName&nbsp;YR&nbsp;&quot;return&nbsp;the&nbsp;value&quot;&nbsp;AN&nbsp;YR&nbsp;3&nbsp;MKAY</span></span></span></div></pre>
-						</body>
-					</html>
+<pre><code>SUM OF a AN b                        BTW +
+DIFF OF a AN b                       BTW -
+PRODUKT OF a AN b                    BTW *
+QUOSHUNT OF a AN b                   BTW /
+MOD OF a AN b                        BTW modulo
+BIGGR OF a AN b                      BTW max
+SMALLR OF a AN b                     BTW min
+
+BOTH OF a AN b                       BTW and
+EITHER OF a AN b                     BTW or
+WON OF a AN b                        BTW xor
+NOT a                                BTW not
+
+BOTH SAEM a AN b                     BTW ==
+BOTH DIFFRINT a AN b                 BTW !=
+
+BOTH SAEM a AN BIGGR OF a AN b       BTW &gt;=
+BOTH SAEM a AN SMALLR OF a AN b      BTW &lt;=
+BOTH DIFFRINT a AN SMALLR OF a AN b  BTW &gt;
+BOTH DIFFRINT a AN BIGGR OF a AN b   BTW &lt;
+</code></pre>
+<h3 id="flow-control">Flow Control</h3>
+<pre><code>BTW If statement
+BOTH SAEM a AN b
+O RLY?
+	YA RLY
+		BTW If
+	MEBBE BOTH SAEM b AN c
+		BTW ElseIf
+	NO WAI
+		BTW Else
+OIC
+
+BTW Case statement
+variable
+WTF?
+	OMG &quot;R&quot;
+		BTW variable = &quot;R&quot;
+		GTFO
+	OMG &quot;Y&quot;
+		BTW variable = &quot;Y&quot;
+	OMG &quot;G&quot;
+		BTW variable = &quot;Y&quot; or variable = &quot;G&quot;
+		GTFO
+	OMGWTF
+		BTW default
+OIC
+
+BTW While loop
+IM IN YR loop    BTW 'loop' is the name of the loop
+	GTFO         BTW break
+IM OUTTA YR loop
+
+BTW Can also pretend to be a for loop
+IM IN YR forLoop UPPIN YR index TIL BOTH SAEM index AN 5
+	VISIBLE index
+IM OUTTA YR forLoop
+</code></pre>
+<h3 id="functions">Functions</h3>
+<pre><code>HOW IZ I functionName YR arg1 AN YR arg2
+	BOTH SAEM arg1 AN &quot;return the value&quot;
+	O RLY?
+		YA RLY
+			FOUND YR arg2  BTW Returns arg2
+		NO WAI
+			GTFO           BTW Returns NOOB
+	OIC
+IF U SAY SO
+
+I IZ functionName YR &quot;return the value&quot; AN YR 3 MKAY
+</code></pre>
+
+</body>
+</html>

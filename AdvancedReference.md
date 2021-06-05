@@ -68,7 +68,7 @@ https://github.com/justinmeza/lci
 	I HAS A contents ITZ I IZ STDIO'Z LUK YR readFile AN YR 1024 MKAY
 
 	BTW Open file for writing
-	I HAS A writeFile ITZ I IZ STDIO'Z OPEN YR "filename" AN YR "r" MKAY
+	I HAS A writeFile ITZ I IZ STDIO'Z OPEN YR "filename" AN YR "w" MKAY
 
 	BTW Write to file
 	I IZ STDIO'Z SCRIBBEL YR writeFile AN YR "I'z writing to the file" MKAY

@@ -20,19 +20,19 @@ The following features will probably not work outside of LCI by Justin Meza.
 	CAN HAS STDIO?
 
 ### Arrays ###
-    BTW Create an array
-    I HAS A array ITZ A BUKKIT
+	BTW Create an array
+	I HAS A array ITZ A BUKKIT
 
-    BTW Store/access values in array referenced by literals
-    array'Z one R 1     BTW Kinda like array.one = 1
-    array'Z two R 2     BTW Kinda like array.two = 2
-    VISIBLE array'Z 1   BTW Accessing array.one
-    VISIBLE array'Z two
+	BTW Store/access values in array referenced by literals
+	array'Z one R 1     BTW Kinda like array.one = 1
+	array'Z two R 2     BTW Kinda like array.two = 2
+	VISIBLE array'Z 1   BTW Accessing array.one
+	VISIBLE array'Z two
 
-    BTW Use a variable to index into an array
-    I HAS A index ITZ 3
-    array'Z SRS 2 R 1        BTW Kinda like array[2] = 1
-    array'Z SRS index R 1    BTW Kinda like array[index] = 1
+	BTW Use a variable to index into an array
+	I HAS A index ITZ 3
+	array'Z SRS 2 R 1        BTW Kinda like array[2] = 1
+	array'Z SRS index R 1    BTW Kinda like array[index] = 1
 
 	BTW Functions in arrays
 	HOW IZ I functionName
